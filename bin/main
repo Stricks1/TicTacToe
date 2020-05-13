@@ -48,6 +48,61 @@ class Tictactoe
     end
     one > two
   end
+
+  def turn
+    player? ? 'Player TWO' : 'Player ONE'
+  end
+
+  def check_position?(pos)
+    @grid[pos] == 'X' || @grid[pos] == 'O' || pos > 8 ? false : true
+  end
+
+  def add_elements(pos)
+    @grid[pos] = player? ? 'O' : 'X'
+  end
+
+  def full?
+    i = 0
+    while i < @grid.size
+      if @grid[i].is_a?(Integer)
+        return false
+      end
+      i += 1
+    end
+    return true
+  end
+
+  def comb_one
+    unless @grid[4].is_a?(Integer)
+      if (@grid[1] == @grid[4] && @grid[7] == @grid[4]) ||
+         (@grid[0] == @grid[4] && @grid[8] == @grid[4]) ||
+         (@grid[2] == @grid[4] && @grid[6] == @grid[4])
+        true
+      end
+    end
+  end
+
+  def comb_two
+    unless @grid[0].is_a?(Integer)
+      if (@grid[0] == @grid[3] && @grid[0] == @grid[6]) ||
+         (@grid[0] == @grid[1] && @grid[0] == @grid[2])
+        true
+      end
+    end
+  end
+
+  def comb_three
+    unless @grid[8].is_a?(Integer)
+      if (@grid[8] == @grid[7] && @grid[8] == @grid[6]) ||
+         (@grid[8] == @grid[5] && @grid[8] == @grid[2])
+        true
+      end
+    end
+  end
+
+  def win?
+    true if comb_one || comb_two || comb_three
+  end
 end
 
 # rubocop:enable Style/StringLiterals
