@@ -50,15 +50,15 @@ class Tictactoe
   end
 
   def turn
-    player? ? 'Player TWO' : 'Player ONE'
+    player? ? "Player TWO" : "Player ONE"
   end
 
   def check_position?(pos)
-    @grid[pos] == 'X' || @grid[pos] == 'O' || pos > 8 ? false : true
+    @grid[pos] == "X" || @grid[pos] == "O" || pos > 8 ? false : true
   end
 
   def add_elements(pos)
-    @grid[pos] = player? ? 'O' : 'X'
+    @grid[pos] = player? ? "O" : "X"
   end
 
   def full?
@@ -103,6 +103,30 @@ class Tictactoe
   def win?
     true if comb_one || comb_two || comb_three
   end
+
+  def winner
+    player? ? "Player ONE" : "Player TWO"
+  end
+
+  def play
+    show_grid
+    loop do
+      if full?
+        puts "Its a draw, the grid is full"
+        break
+      end
+      move
+      if win?
+        puts "#{winner} wins"
+        break
+      else
+        puts "Its a draw"
+      end
+    end
+  end
 end
+
+game = Tictactoe.new
+game.play
 
 # rubocop:enable Style/StringLiterals
