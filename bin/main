@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-# rubocop:disable Style/StringLiterals
+# rubocop:disable Style/StringLiterals, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/GuardClause
 
 class Tictactoe
   attr_reader :grid
@@ -64,12 +64,11 @@ class Tictactoe
   def full?
     i = 0
     while i < @grid.size
-      if @grid[i].is_a?(Integer)
-        return false
-      end
+      return false if @grid[i].is_a?(Integer)
+
       i += 1
     end
-    return true
+    true
   end
 
   def comb_one
@@ -129,4 +128,4 @@ end
 game = Tictactoe.new
 game.play
 
-# rubocop:enable Style/StringLiterals
+# rubocop:enable Style/StringLiterals, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/GuardClause
