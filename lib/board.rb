@@ -1,7 +1,6 @@
-require './winning.rb'
-require './player.rb'
+require_relative 'winning'
+require_relative 'player'
 
-# Board class to store the grid and prints on the screen
 class Board < Winning
   attr_reader :grid
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-require './board.rb'
-require './player.rb'
-require './winning.rb'
-require './playagain.rb'
+require '../lib/board.rb'
+require '../lib/player.rb'
+require '../lib/winning.rb'
+require '../lib/playagain.rb'
 
 def error_out_range
   puts 'That number is not on the Board!'
@@ -16,12 +16,8 @@ def message_won(player)
   puts "Congratulations #{player} you won!"
 end
 
-def message_draw
-  puts 'Its a draw move!'
-end
-
 def message_board_full
-  puts 'Board full with no winner'
+  puts 'Its a draw! Board full with no winner'
 end
 
 def write_grid(grid)

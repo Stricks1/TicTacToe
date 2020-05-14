@@ -1,4 +1,3 @@
-# Player class to store X or O and his name
 class Player
   attr_reader :character, :player
 

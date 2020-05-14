@@ -12,7 +12,6 @@ class Winning
       message_won(player)
       return true
     end
-    message_draw
     i = 0
     while i < @grid.size
       return false if @grid[i].is_a? Numeric
