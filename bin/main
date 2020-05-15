@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-require '../lib/board.rb'
-require '../lib/player.rb'
-require '../lib/winning.rb'
-require '../lib/playagain.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/winning.rb'
+require_relative '../lib/playagain.rb'
 
 def error_out_range
   puts 'That number is not on the Board!'
