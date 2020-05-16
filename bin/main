@@ -1,131 +1,61 @@
 #!/usr/bin/env ruby
+require_relative '../lib/board.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/winning.rb'
+require_relative '../lib/playagain.rb'
 
-# rubocop:disable Style/StringLiterals, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/GuardClause
+def error_out_range
+  puts 'That number is not on the Board!'
+end
 
-class Tictactoe
-  attr_reader :grid
+def error_place_taken
+  puts 'That place is already taken!'
+end
 
-  def initialize
-    @grid = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  end
+def message_won(player)
+  puts "Congratulations #{player} you won!"
+end
 
-  def show_grid
-    @grid.each_with_index do |item, index|
-      if ((index + 1) % 3).zero?
-        puts "#{item} |"
-        puts "============="
-      else
-        print " #{item} |"
-      end
-    end
-  end
+def message_board_full
+  puts 'Its a draw! Board full with no winner'
+end
 
-  def ask
-    puts "#{turn} It\'s your turn:"
-  end
-
-  def move
-    ask
-    puts "Select one from the available moves:"
-    move = gets.chomp.to_i
-    until check_position?(move - 1)
-      puts "#{turn} Select one from the available moves this position is already used:"
-      move = gets.chomp.to_i
-    end
-    add_elements(move - 1)
-    show_grid
-  end
-
-  def player?
-    one = 0
-    two = 0
-    @grid.each do |item|
-      if item == "X"
-        one += 1
-      elsif item == "O"
-        two += 1
-      end
-    end
-    one > two
-  end
-
-  def turn
-    player? ? "Player TWO" : "Player ONE"
-  end
-
-  def check_position?(pos)
-    @grid[pos] == "X" || @grid[pos] == "O" || pos > 8 ? false : true
-  end
-
-  def add_elements(pos)
-    @grid[pos] = player? ? "O" : "X"
-  end
-
-  def full?
-    i = 0
-    while i < @grid.size
-      return false if @grid[i].is_a?(Integer)
-
-      i += 1
-    end
-    true
-  end
-
-  def comb_one
-    unless @grid[4].is_a?(Integer)
-      if (@grid[1] == @grid[4] && @grid[7] == @grid[4]) ||
-         (@grid[0] == @grid[4] && @grid[8] == @grid[4]) ||
-         (@grid[2] == @grid[4] && @grid[6] == @grid[4])
-        true
-      end
-    end
-  end
-
-  def comb_two
-    unless @grid[0].is_a?(Integer)
-      if (@grid[0] == @grid[3] && @grid[0] == @grid[6]) ||
-         (@grid[0] == @grid[1] && @grid[0] == @grid[2])
-        true
-      end
-    end
-  end
-
-  def comb_three
-    unless @grid[8].is_a?(Integer)
-      if (@grid[8] == @grid[7] && @grid[8] == @grid[6]) ||
-         (@grid[8] == @grid[5] && @grid[8] == @grid[2])
-        true
-      end
-    end
-  end
-
-  def win?
-    true if comb_one || comb_two || comb_three
-  end
-
-  def winner
-    player? ? "Player ONE" : "Player TWO"
-  end
-
-  def play
-    show_grid
-    loop do
-      if full?
-        puts "Its a draw, the grid is full"
-        break
-      end
-      move
-      if win?
-        puts "#{winner} wins"
-        break
-      else
-        puts "Its a draw"
-      end
+def write_grid(grid)
+  grid.each_with_index do |item, index|
+    if ((index + 1) % 3).zero?
+      puts " #{item} |"
+      puts '============='
+    else
+      print " #{item} |"
     end
   end
 end
 
-game = Tictactoe.new
-game.play
-
-# rubocop:enable Style/StringLiterals, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/GuardClause
+keep_playing = true
+while keep_playing
+  puts `clear`
+  board = Board.new
+  puts 'Type your name Player 1: '
+  p1name = gets.chomp
+  puts 'Type your name Player 2: '
+  p2name = gets.chomp
+  p1 = Player.new('X', p1name)
+  p2 = Player.new('O', p2name)
+  turn = [p1, p2]
+  write_grid(board.grid)
+  i = 1
+  flag = false
+  until flag
+    i += 1
+    i = 0 if i > 1
+    valid_play = false
+    until valid_play
+      puts "#{turn[i].player} choose a place on the board to make your #{turn[i].character}"
+      valid_play = board.change_grid(gets.chomp.to_i, turn[i].character)
+      write_grid(board.grid)
+      flag = board.finish_condition(turn[i].player)
+    end
+  end
+  puts 'Do you want to play again? (Y/y to play again)'
+  keep_playing = play_again(gets.chomp)
+end
