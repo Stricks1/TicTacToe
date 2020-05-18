@@ -40,12 +40,24 @@ end
 
 keep_playing = true
 while keep_playing
+  p1name = nil
+  p2name = nil
   puts `clear`
   board = Board.new
   puts 'Type your name Player 1: '
-  p1name = gets.chomp
+  loop do
+    p1name = gets.chomp.tr(' ', '')
+    break unless p1name.empty?
+
+    puts 'Type your name Player 1: '
+  end
   puts 'Type your name Player 2: '
-  p2name = gets.chomp
+  loop do
+    p2name = gets.chomp.tr(' ', '')
+    break unless p2name.empty?
+
+    puts 'Type your name Player 2: '
+  end
   p1 = Player.new('X', p1name)
   p2 = Player.new('O', p2name)
   turn = [p1, p2]
