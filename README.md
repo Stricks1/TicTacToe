@@ -1,5 +1,8 @@
 # Tic-Tac-Toe
 
+In this project, we build a Tic Tac Toe game. The main goal is to put into practice the main concepts of Object Oriented Programming.
+Particularly, classes and access to their attributes.
+
 ![screenshoot](./img/tictactoeSS.png)
 
 ## Tic-Tac-Toe Rules
@@ -25,10 +28,10 @@ $ git clone https://github.com/Stricks1/TicTacToe.git
 
 To run the game, go to your terminal on the folder you saved and type: main
 - At the beggining the game will ask players for their names
-- The game will display the board and tells which player turn it is and asks to select from available moves
-- The game will informs player if selected move is invalid and ask again until he type a valid move
-- The game will displays board after player move
-- The game will repeats all actions for next player's move until there is a winner or the board is full
+- The game will display the board, tells which player turn it is and asks to select from available moves
+- The game will inform player if selected move is invalid and ask again until he type a valid move
+- The game will display board after player move
+- The game will repeat all actions for next player's move until there is a winner or the board is full
 - The game will ask if you want to play again
 
 ## Built With
@@ -47,11 +50,17 @@ To run the game, go to your terminal on the folder you saved and type: main
 - E-mail: [Gabriel Silveira](mailto:gmalheiross@gmail.com)
 - Linkedin: [Gabriel Silveira](https://linkedin.com/in/gabriel-malheiros-silveira-b6632061/)
 
+👤 **Author2**
+
+* Github: **[@rindrajosia](https://github.com/rindrajosia)**
+* Twitter: **[@rindrajosia](https://twitter.com/josia_rindra)**
+* Linkedin: **[linkedin](https://www.linkedin.com/in/rindra-josia-99b2111a2/)**
+
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/Stricks1/TicTacToe/issues).
 
 ## Show your support
 
