@@ -2,7 +2,6 @@
 require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
 require_relative '../lib/winning.rb'
-require_relative '../lib/playagain.rb'
 
 def error_out_range
   puts 'That number is not on the Board!'
@@ -18,6 +17,14 @@ end
 
 def message_board_full
   puts 'Its a draw! Board full with no winner'
+end
+
+def play_again(input)
+  if %w[Y y].include?(input)
+    true
+  else
+    false
+  end
 end
 
 def write_grid(grid)
