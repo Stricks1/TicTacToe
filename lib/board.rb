@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 require_relative 'winning'
 require_relative 'player'
 
@@ -11,9 +12,8 @@ class Board < Winning
   end
 
   def change_grid(number, char)
-    if !number.is_a? Numeric
-      number = number.to_i
-    end
+    number = number.to_i unless number.is_a? Numeric
+
     if @grid[number - 1].nil? || number.zero?
       error_out_range
       return false
@@ -27,3 +27,4 @@ class Board < Winning
     false
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity

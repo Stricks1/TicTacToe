@@ -1,8 +1,8 @@
 # rubocop:disable
-require "./lib/player.rb"
+require './lib/player.rb'
 
 describe Player do
-  let(:test_player) { Player.new("O", "Gabriel") }
+  let(:test_player) { Player.new('O', 'Gabriel') }
   describe '#reader' do
     it 'Return O as character' do
       expect(test_player.character).to eql('O')
