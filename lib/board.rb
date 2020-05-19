@@ -1,5 +1,5 @@
-require_relative 'winning'
-require_relative 'player'
+require_relative "winning"
+require_relative "player"
 
 class Board < Winning
   attr_reader :grid
@@ -11,10 +11,13 @@ class Board < Winning
   end
 
   def change_grid(number, char)
+    if !number.is_a? Numeric
+      number = number.to_i
+    end
     if @grid[number - 1].nil? || number.zero?
       error_out_range
       return false
-    elsif @grid[number - 1] == 'X' || @grid[number - 1] == 'O'
+    elsif @grid[number - 1] == "X" || @grid[number - 1] == "O"
       error_place_taken
       return false
     elsif @grid[number - 1].between?(1, 9)
