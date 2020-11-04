@@ -10,7 +10,7 @@ Particularly, classes and access to their attributes.
 - Requires
 2 people
 
-- Game Play
+- Game Play: 
 One player (designated X) makes the first move by drawing that letter in any one of the 9 boxes; O follows by making the second move. The game can have only three outcomes: either player may emerge victorious by linking three of their letters horizontally, vertically, or diagonally, or else the game ends in a “cat’s game” in which neither player connects three in a row.
 
 - Objective
@@ -27,7 +27,7 @@ $ git clone https://github.com/Stricks1/TicTacToe.git
 ```
 
 To run the game, go to your terminal on the folder you saved and type: main
-- At the beggining the game will ask players for their names
+- At the beginning the game will ask players for their names
 - The game will display the board, tells which player turn it is and asks to select from available moves
 - The game will inform player if selected move is invalid and ask again until he type a valid move
 - The game will display board after player move
